@@ -38,13 +38,13 @@ import javax.swing.*;
 public class RegFrame extends javax.swing.JFrame {
 
     Register reg;
-    MainFrame mframe;
+    MainFrame mainf;
 
     /** Creates new form RegFrame */
     RegFrame(Register r,MainFrame mf) {
         initComponents();
         reg=r;
-        mframe=mf;
+        mainf=mf;
         pack();
         setVisible(true);
         a.setText(reg.getA().toUpperCase());
@@ -455,8 +455,9 @@ public class RegFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        mframe.updateRegViewer();
-        mframe.setEnabled(true);
+        mainf.updateMemoryViewer();
+        mainf.setEnabled(true);
+        mainf.toFront();
     }//GEN-LAST:event_formWindowClosed
 
     /**

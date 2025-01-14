@@ -381,6 +381,7 @@ public class MemFrame extends javax.swing.JFrame implements TableModelListener{
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         mainf.updateMemoryViewer();
         mainf.setEnabled(true);
+        mainf.toFront();
     }//GEN-LAST:event_formWindowClosed
 
     private void floodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_floodButtonActionPerformed
@@ -411,6 +412,8 @@ public class MemFrame extends javax.swing.JFrame implements TableModelListener{
     }//GEN-LAST:event_floodButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        mainf.setEnabled(true);
+        mainf.toFront(); 
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

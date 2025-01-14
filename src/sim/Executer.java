@@ -1355,10 +1355,9 @@ public class Executer {
                 reg.setL(pair.substring(2,4));
             }
 
-            else if(hex.equals("01")) //lxi sp,xxxx
+            else if(hex.equals("31")) //lxi sp,xxxx
             {
                 String pair=getOperand(hex);
-
                 reg.setSP(pair);
             }
 

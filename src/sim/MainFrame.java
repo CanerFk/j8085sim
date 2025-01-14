@@ -206,27 +206,27 @@ public class MainFrame extends javax.swing.JFrame implements TableModelListener,
     }
     //////////////////////////////////////////////////////////////////////////////////////
 
-    public void run()
-    {
-        StyledDocument doc=pgmEditor.getStyledDocument();
-        HashMap lineDetail=sa.getLineInfo();
-        int LINELIMITS[]={0,0};
-        int tstate=0;
+    public void run() {
+        StyledDocument doc = pgmEditor.getStyledDocument();
+        HashMap lineDetail = sa.getLineInfo();
+        int[] lastHighlight = {0,0};
 
-        while(memAddress!=null)
-        {
-            //for highlighting while executing
-            doc.setCharacterAttributes(LINELIMITS[0], LINELIMITS[1], unhighlightattr, false);
-            LINELIMITS=(int[])lineDetail.get(memAddress);
-            if(LINELIMITS==null)
-            {
-                LINELIMITS=new int[]{0,0};
+        while(memAddress!=null) {
+            // I added it to clear previous highlighting
+            doc.setCharacterAttributes(lastHighlight[0], lastHighlight[1], unhighlightattr, false);
+
+            int[] LINELIMITS = (int[])lineDetail.get(memAddress);
+            if(LINELIMITS == null) {
+                LINELIMITS = new int[]{0,0};
+            } else {
+                doc.setCharacterAttributes(LINELIMITS[0], LINELIMITS[1], highlightattr, false);
+                lastHighlight[0] = LINELIMITS[0];
+                lastHighlight[1] = LINELIMITS[1];
             }
-            doc.setCharacterAttributes(LINELIMITS[0], LINELIMITS[1], highlightattr, false);
-            ///////////////////////////////////////////////////////////////////////////////////
+
             String tempAddr=memAddress;
             memAddress=exec.execute(memAddress);
-            tstate=exec.getTstates();
+            int tstate=exec.getTstates();
             updateRegViewer();
 
             if(tstate<0)
