@@ -874,54 +874,66 @@ public class Executer {
 
             else if(hex.equals("3d")) //dcr a
             {
+                int tempCarry = reg.getCarry();
                 String operand=reg.subtractionEffectingAC(reg.getA(),"1");
                 reg.setAwithFlags(operand);
+                reg.setCarry(tempCarry);
             }
 
             else if(hex.equals("05")) //dcr b
             {
+                int tempCarry = reg.getCarry();
                 String operand=reg.subtractionEffectingAC(reg.getB(),"1");
                 reg.setBwithFlags(operand);
+                reg.setCarry(tempCarry);
 
             }
 
             else if(hex.equals("0d")) //dcr c
             {
+                int tempCarry = reg.getCarry();
                 String operand=reg.subtractionEffectingAC(reg.getC(),"1");
                 reg.setCwithFlags(operand);
+                reg.setCarry(tempCarry);
 
             }
 
              else if(hex.equals("15")) //dcr d
             {
+                int tempCarry = reg.getCarry();
                 String operand=reg.subtractionEffectingAC(reg.getD(),"1");
                 reg.setDwithFlags(operand);
+                reg.setCarry(tempCarry);
 
             }
 
             else if(hex.equals("1d")) //dcr e
             {
+                int tempCarry = reg.getCarry();
                 String operand=reg.subtractionEffectingAC(reg.getE(),"1");
                 reg.setEwithFlags(operand);
-
+                reg.setCarry(tempCarry);
             }
 
              else if(hex.equals("25")) //dcr h
             {
+                int tempCarry = reg.getCarry();
                 String operand=reg.subtractionEffectingAC(reg.getH(),"1");
                 reg.setHwithFlags(operand);
-
+                reg.setCarry(tempCarry);
             }
 
              else if(hex.equals("2d")) //dcr l
             {
+                int tempCarry = reg.getCarry();
                 String operand=reg.subtractionEffectingAC(reg.getL(),"1");
                 reg.setLwithFlags(operand);
-
+                reg.setCarry(tempCarry);
             }
 
              else if(hex.equals("35")) //dcr m
             {
+                
                 String adr=reg.getHL();
                 String memory=mem.read(adr);
                 memory=reg.subtractionEffectingAC(memory, "1");
